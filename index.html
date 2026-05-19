@@ -25,11 +25,40 @@
 html.lb-open{overflow:hidden}
 body{background:var(--oat);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
-.hero{text-align:center;padding:clamp(64px,11vw,104px) 28px 56px}
-.eyebrow{font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--rose-ink);font-weight:600}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(44px,7.5vw,90px);line-height:1.05;margin:24px 0 0;letter-spacing:-.5px}
+.hero{max-width:1240px;margin:0 auto;padding:clamp(28px,5vw,56px) 28px clamp(28px,5vw,52px);
+  display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:clamp(20px,4vw,56px);
+  min-height:min(84vh,780px)}
+.hero-copy{max-width:540px}
+.eyebrow{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--rose-ink);font-weight:600;
+  opacity:0;animation:rise .9s .05s cubic-bezier(.16,1,.3,1) forwards}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(46px,6.6vw,86px);line-height:1.03;
+  margin:22px 0 0;letter-spacing:-.6px;opacity:0;animation:rise 1s .16s cubic-bezier(.16,1,.3,1) forwards}
 .hero h1 em{font-style:italic;color:var(--rose);font-weight:700}
-.hero p{max-width:600px;margin:24px auto 0;font-size:17px;line-height:1.75;color:#5f564c}
+.hero p{max-width:430px;margin:24px 0 0;font-size:17px;line-height:1.75;color:#5f564c;
+  opacity:0;animation:rise 1s .28s cubic-bezier(.16,1,.3,1) forwards}
+.hero-cue{margin-top:34px;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);
+  opacity:0;animation:rise 1s .4s cubic-bezier(.16,1,.3,1) forwards}
+.hero-cue::before{content:"";display:inline-block;width:30px;height:1px;background:var(--rose-ink);
+  vertical-align:middle;margin-right:12px}
+.hero-photo{position:relative;align-self:stretch;display:flex;align-items:flex-end;justify-content:flex-end;
+  opacity:0;animation:fade 1.3s .3s ease-out forwards}
+.hero-photo img{width:100%;max-height:min(80vh,760px);object-fit:contain;object-position:bottom right;
+  -webkit-mask-image:linear-gradient(96deg,transparent 0,#000 26%,#000 90%,transparent 100%),linear-gradient(180deg,transparent 0,#000 7%,#000 91%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(96deg,transparent 0,#000 26%,#000 90%,transparent 100%),linear-gradient(180deg,transparent 0,#000 7%,#000 91%,transparent 100%);
+  mask-composite:intersect}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:0;gap:8px;padding-top:clamp(40px,9vw,64px);text-align:left}
+  .hero-copy{max-width:none;order:1}
+  .hero p{max-width:520px}
+  .hero-photo{order:2;justify-content:center;margin-top:18px}
+  .hero-photo img{max-height:62vh;object-position:top center;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
+  .hero-cue{display:none}
+}
 .divider{height:1px;background:var(--line);max-width:1180px;margin:8px auto}
 .cal{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:36px 28px 8px}
 .cal a{text-decoration:none;color:var(--ink)}
@@ -68,14 +97,22 @@ body{background:var(--oat);color:var(--ink);font-family:'Inter',system-ui,sans-s
   .rail img{height:122px}
   .lb img{max-width:94vw;max-height:70vh}
 }
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;opacity:1!important}}
 </style></head><body>
 
 <header class="hero">
-  <div class="eyebrow">Arena Group Network &nbsp;·&nbsp; Social Content Preview</div>
-  <h1>Your first month,<br><em>designed</em>.</h1>
-  <p>A first look at the content built for your feed. Every post art-directed in your
-  brand world: editorial, feminine, and unmistakably yours. Tap any cover to view the full carousel.</p>
+  <div class="hero-copy">
+    <div class="eyebrow">Arena Group Network &nbsp;·&nbsp; Social Content Preview</div>
+    <h1>Your first month,<br><em>designed</em>.</h1>
+    <p>A first look at the content built for your feed, art-directed in your brand world.
+    Tap any cover to view the full carousel.</p>
+    <div class="hero-cue">Scroll to view</div>
+  </div>
+  <div class="hero-photo">
+    <img src="_assets/hero.webp" width="1040" height="1560"
+         fetchpriority="high" decoding="async"
+         alt="Arena Hudson, Arena Group Network, DFW real estate specialist">
+  </div>
 </header>
 <div class="divider"></div>
 <nav class="cal" aria-label="Content calendar">

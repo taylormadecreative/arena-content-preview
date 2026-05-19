@@ -42,11 +42,8 @@ body{background:var(--oat);color:var(--ink);font-family:'Inter',system-ui,sans-s
   vertical-align:middle;margin-right:12px}
 .hero-photo{position:relative;align-self:stretch;display:flex;align-items:flex-end;justify-content:flex-end;
   opacity:0;animation:fade 1.3s .3s ease-out forwards}
-.hero-photo img{width:100%;max-height:min(80vh,760px);object-fit:contain;object-position:bottom right;
-  -webkit-mask-image:linear-gradient(96deg,transparent 0,#000 26%,#000 90%,transparent 100%),linear-gradient(180deg,transparent 0,#000 7%,#000 91%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:linear-gradient(96deg,transparent 0,#000 26%,#000 90%,transparent 100%),linear-gradient(180deg,transparent 0,#000 7%,#000 91%,transparent 100%);
-  mask-composite:intersect}
+.hero-photo img{width:100%;max-height:min(84vh,800px);object-fit:contain;object-position:bottom center;
+  filter:drop-shadow(0 26px 44px rgba(33,28,24,.16))}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @keyframes fade{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
 @media(max-width:860px){
@@ -54,9 +51,7 @@ body{background:var(--oat);color:var(--ink);font-family:'Inter',system-ui,sans-s
   .hero-copy{max-width:none;order:1}
   .hero p{max-width:520px}
   .hero-photo{order:2;justify-content:center;margin-top:18px}
-  .hero-photo img{max-height:62vh;object-position:top center;
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%);
-    mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
+  .hero-photo img{max-height:58vh;object-position:bottom center}
   .hero-cue{display:none}
 }
 .divider{height:1px;background:var(--line);max-width:1180px;margin:8px auto}
@@ -109,7 +104,7 @@ body{background:var(--oat);color:var(--ink);font-family:'Inter',system-ui,sans-s
     <div class="hero-cue">Scroll to view</div>
   </div>
   <div class="hero-photo">
-    <img src="_assets/hero.webp" width="1040" height="1560"
+    <img src="_assets/hero.webp" width="841" height="1500"
          fetchpriority="high" decoding="async"
          alt="Arena Hudson, Arena Group Network, DFW real estate specialist">
   </div>
